@@ -1,0 +1,76 @@
+/* src/styles.css */
+
+.app-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .language-selection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .language-selection label {
+    margin-bottom: 10px;
+  }
+  
+  .voice-recorder {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .record-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  .transcripts {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .transcript-section {
+    margin-bottom: 20px;
+  }
+  
+  .transcript-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .transcript-section p {
+    background-color: #f1f1f1;
+    padding: 10px;
+    min-height: 50px;
+  }
+  
+  .transcript-section button {
+    margin-top: 10px;
+    padding: 8px 16px;
+  }
+  
+  @media (min-width: 600px) {
+    .transcripts {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .transcript-section {
+      width: 48%;
+    }
+  
+    .language-selection {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .language-selection label {
+      width: 48%;
+    }
+  }
+  
