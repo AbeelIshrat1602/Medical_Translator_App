@@ -1,4 +1,5 @@
 // src/translateText.js
+
 import axios from 'axios';
 
 const translateText = async (text, sourceLang, targetLang) => {
@@ -23,7 +24,7 @@ const translateText = async (text, sourceLang, targetLang) => {
     return response.data.choices[0].message.content.trim();
   } catch (error) {
     console.error('OpenAI API error:', error.response ? error.response.data : error.message);
-    throw error;
+    throw error; // Propagate the error to be handled by the caller
   }
 };
 

@@ -2,10 +2,10 @@
 
 import React, { useState, useRef } from 'react';
 
-const VoiceRecorder = ({ setTranscript, sourceLang }) => {
+const VoiceRecorder = ({ setTranscript, sourceLang, onStartRecording }) => {
   const [listening, setListening] = useState(false);
   const recognitionRef = useRef(null);
-  const finalTranscriptRef = useRef(''); // Holds the accumulated final transcript
+  const finalTranscriptRef = useRef('');
 
   const getLanguageCode = (language) => {
     const languageMap = {
@@ -24,6 +24,11 @@ const VoiceRecorder = ({ setTranscript, sourceLang }) => {
     if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
       alert('Your browser does not support speech recognition.');
       return;
+    }
+
+    // Call the function to clear transcripts
+    if (onStartRecording) {
+      onStartRecording();
     }
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -64,14 +69,14 @@ const VoiceRecorder = ({ setTranscript, sourceLang }) => {
     if (recognitionRef.current) {
       recognitionRef.current.stop();
       setListening(false);
-      finalTranscriptRef.current = ''; // Reset the final transcript when stopping
+      finalTranscriptRef.current = '';
     }
   };
 
   return (
     <div className="voice-recorder">
       <button onClick={listening ? stopListening : startListening} className="record-button">
-        {listening ? 'Stop Recording' : 'Start Recording'}
+        {listening ? '⏹ Stop Recording' : '🎙 Start Recording'}
       </button>
     </div>
   );
